@@ -8,34 +8,28 @@ public class PlayerTankGun : TankGun
     [SerializeField] private AudioSource _reloadSound;
     [SerializeField] private AudioSource _shootSound;
 
-    private Animator _animator;
+    private const string Shoot = "Shoot";
 
-    private float _timeAfterShoot;
+    private Animator _animator;
 
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _timeAfterShoot = ShootDelay;
     }
 
     private void Update()
     {   
-        _timeAfterShoot += Time.deltaTime;
-        
         if (Input.GetMouseButton(0))
-        {
-            if (TryShoot(_timeAfterShoot))
-                _timeAfterShoot = 0;
-        }
+            TryShoot();
     }
 
-    protected override bool TryShoot(float timeAfterShoot)
+    protected override bool TryShoot()
     {
-        if (base.TryShoot(timeAfterShoot))
+        if (base.TryShoot())
         {
             _shootSound.Play();
             _reloadSound.Play();
-            _animator.Play("Shoot");
+            _animator.Play(Shoot);
 
             return true;
         }

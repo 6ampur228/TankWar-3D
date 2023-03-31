@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyTankGun : TankGun
 {
-    public bool TryEnemyTankShoot(float timeAfterShoot)
+    public bool TryShoot()
     {
-        return base.TryShoot(timeAfterShoot);
+        return base.TryShoot();
     }
 }

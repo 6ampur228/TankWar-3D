@@ -8,10 +8,4 @@ public class EnemyTank : Tank
     [SerializeField] private PlayerTank _target;
 
     public PlayerTank Target => _target;
-
-    private void Update()
-    {
-        if(CurrentHealth <= 0)
-            Die();
-    }
 }

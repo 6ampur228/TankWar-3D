@@ -17,6 +17,10 @@ public class Shell : MonoBehaviour
         Destroy(gameObject);
 
         if(other.gameObject.TryGetComponent(out Tank tank))
+        {
             tank.TakeDamage(_damage);
+            tank.TryDie();
+        }
+            
     }
 }

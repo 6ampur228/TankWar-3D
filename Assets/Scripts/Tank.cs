@@ -8,8 +8,6 @@ public abstract class Tank : MonoBehaviour
 
     private int _currentHealth;
 
-    public int CurrentHealth => _currentHealth;
-
     private void Start()
     {
         _currentHealth = _maxHealth;
@@ -17,5 +15,9 @@ public abstract class Tank : MonoBehaviour
 
     public virtual void TakeDamage(int damage) => _currentHealth -= damage;
 
-    protected virtual void Die() => gameObject.SetActive(false);
+    public virtual void TryDie() 
+    {
+        if(_currentHealth <= 0)
+            gameObject.SetActive(false);
+    }
 }
